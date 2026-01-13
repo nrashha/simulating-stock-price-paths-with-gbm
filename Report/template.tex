@@ -1,0 +1,1745 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  12pt]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+\usepackage[]{natbib}
+\bibliographystyle{agsm}
+
+
+\addtolength{\oddsidemargin}{-.5in}%
+\addtolength{\evensidemargin}{-1in}%
+\addtolength{\textwidth}{1in}%
+\addtolength{\textheight}{1.7in}%
+\addtolength{\topmargin}{-1in}%
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Geometric Brownian Motion in modelling Options and Stock Prices},
+  pdfauthor={Nahian Rashha},
+  pdfkeywords={stochastic processes, Markov property, financial
+modelling, estimation, Black-Scholes framework},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+
+\begin{document}
+
+
+\def\spacingset#1{\renewcommand{\baselinestretch}%
+{#1}\small\normalsize} \spacingset{1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\date{December 15, 2025}
+\title{\bf Geometric Brownian Motion in modelling Options and Stock
+Prices}
+\author{
+Nahian Rashha\thanks{The author gratefully acknowledges her sister and
+friends for their encouragement and support, as well as her professor
+for guidance and feedback throughout the development of this project.}\\
+Department of Statistics, Amherst College\\
+}
+\maketitle
+
+\bigskip
+\bigskip
+\begin{abstract}
+This paper provides an expository review of geometric Brownian motion
+(GBM) as a stochastic model for asset prices and its role in the
+Black--Scholes framework for pricing options. Beginning with
+foundational concepts from probability theory and stochastic processes,
+the paper develops the mathematical structure of Brownian motion,
+introduces GBM through stochastic differential equations, and explains
+how the lognormal price model leads to the Black--Scholes formula under
+ideal market assumptions. A simulation study then illustrates how the
+approximated price of a hypothetical European call option under GBM,
+computed by averaging discounted payoffs, is consistent with the
+Black--Scholes closed-form solution. Finally, the model is applied to
+historical S\&P 500 data to estimate volatility, simulate future index
+paths, and price a hypothetical European call option. While the
+empirical application highlights certain limitations of the GBM
+assumptions in real markets, it also illustrates the practical
+usefulness of GBM as an approximation method for asset prices due to its
+relative success in capturing market behavior over other mathematical
+models.
+\end{abstract}
+
+\noindent%
+{\it Keywords:} stochastic processes, Markov property, financial
+modelling, estimation, Black-Scholes framework
+\vfill
+
+\newpage
+\spacingset{1.9} % DON'T change the spacing!
+
+
+\section{Introduction}\label{sec-intro}
+
+In the financial realm, options are defined as a financial instrument or
+legal contract that gives its owner the right to either buy or sell a
+quantity of assets, typically stocks, at a predetermined price, known as
+a strike price, at or within a certain date, called an expiration date
+\cite{fidelityoptions}. Options that can be exercised at any time within
+the expiration date are termed as `American' while those that can only
+be exercised on the expiration date are referred to as `European.'
+Options that give its owner the right to buy the underlying stocks
+within the contract are `call' options, and those that come with a legal
+right to sell the contract's underlying assets are called `put' options
+\cite{fidelityoptions}.
+
+In general, it is safe to assume that ``the higher the price of the
+stock, the greater the value of the option,'' \cite{blackscholes1973}
+and therefore, accurately forecasting the behavior of the underlying
+assets or stocks of an option is critical for a trader to understand
+what kind of options-based trading strategy might be most profitable for
+them to pursue. For instance, if a stock price can be forecasted to be
+much greater than its strike price negotiated in a call option on or
+within its expiration date, then it is profitable for the trader to buy
+that call option and then, if the forecast holds, the option will most
+likely be exercised by the trader \cite{blackscholes1973}. Therefore,
+traders, risk managers, and financial analysts rely on statistical
+models to forecast asset price movements, assess risk, and determine
+whether an option is ``fairly priced.''
+
+However, modeling stock prices deterministically is challenging since in
+real markets, prices fluctuate continuously, respond to unpredictable
+information, and exhibit randomness. Financial analysts assume that the
+stock market operates under the efficient market hypothesis (EMH), which
+states that given a particular information set, the market already
+captures all of that information and the prices would be unaffected if
+the information was fully revealed to market participants
+\cite{sewell2012}. So, early work in options pricing posit that asset
+prices evolve in a time-dependent and uncertain manner and require
+stochastic modelling assumptions \cite{samuelson1965}. The most
+prominent model to forecast options price is Geometric Brownian Motion
+(GBM), which is a ``continuous-time stochastic process,''
+\cite{entropygbm} where the logarithm of the stock prices follows a
+Brownian motion with drift. This theory was central to the development
+of the `Black-Scholes' formula, which prices European options under the
+assumption that the underlying asset follows a lognormal distribution
+and therefore, can be modeled using a GBM framework
+\cite{blackscholes1973}. In this expository review, I will introduce the
+necessary background for stochastic processes, develop the mathematical
+intuition behind GBM, and explain how the Black--Scholes framework links
+GBM to option valuation. I will then briefly explore prominent examples
+of GBM applied to financial problems in literature. Finally, I will
+build a demonstration model that applies GBM and the Black--Scholes
+formula to real stock-market data.
+
+\section{An Expository Review of Geometric Brownian Motion
+(GBM)}\label{sec-exp}
+
+\subsection{Introduction to Stochastic Processes}\label{sec-exp-stoch}
+
+We recall the definition of a probability space as the triple
+\((\Omega, \mathcal{F}, \mathbb{P})\) where,
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\Omega\) is the sample space, representing the set of all possible
+  outcomes of the random experiment under consideration.
+\item
+  \(\mathcal{F}\) is a collection of subsets of \(\Omega\), called
+  \emph{events}, to which probabilities can be assigned. This collection
+  is chosen so that it contains all events of interest and is closed
+  under complements and countable unions. Intuitively, \(\mathcal{F}\)
+  specifies those events that are observable and meaningful.
+\item
+  \(\mathbb{P}\) is a probability measure defined on the domain
+  \(\mathcal{F}\), satisfying
+\end{enumerate}
+
+\begin{equation}
+\mathbb{P} : \mathcal{F} \to [0,1], \qquad \mathbb{P}(\Omega)=1
+\label{eq:prob_measure}
+\end{equation}
+
+and countable additivity:
+
+\begin{equation}
+\mathbb{P}\!\left(\bigcup_{i=1}^{\infty} A_i\right)
+= \sum_{i=1}^{\infty} \mathbb{P}(A_i),
+\qquad \text{for all disjoint } A_i \in \mathcal{F}.
+\label{eq:countable_additivity}
+\end{equation}
+
+\cite{pettersdong}
+
+A stochastic (or random) process is a collection of random variables
+defined on a given probability space
+\((\Omega, \mathcal{F}, \mathbb{P})\). Each of these random variables
+represent the same underlying quantity, but capture observations of the
+quantity at different points in time. Taken together, the stochastic
+process models the evolution of that uncertain quantity over time
+\cite{pettersdong}. Formally, following Petters and Dong, given a
+probability space \((\Omega, \mathcal{F}, \mathbb{P})\), a stochastic
+process is defined as
+
+\begin{equation}
+\{X(t): t \in J\},
+\label{eq:stochastic_process}
+\end{equation}
+
+where each \(X(t)\) is a real-valued random variable defined on the
+common probability space and \(J\), a non-empty subset of the reals, is
+an index set of the process \(X\) representing time \cite{pettersdong}.
+If \(J=\mathbb{N}\), then the random process evolves over discrete time
+and if \(J=[0,\infty)\), it evolves over continuous time
+\cite{pettersdong}.
+
+As discussed by Samuelson in his foundational 1965 paper, asset prices
+evolve over time in a way that incorporates both deterministic trends
+and random fluctuations, motivating the use of continuous-time
+stochastic models when forecasting stock prices \cite{samuelson1965}.
+
+\subsection{Markov Processes and the Markov
+Property}\label{sec-exp-markov}
+
+In this section, we review necessary definitions for a widely used
+stochastic process fundamental to understanding the theory for GBM.
+First, we recall that a set \(S\) is called the \emph{state space} of a
+system or process if it consists of all possible values that the random
+variables associated with that system may take \cite{hoelportstone}.
+This state space is called discrete if \(S\) is a finite or countable
+set, and \emph{continuous} if it is an uncountable subset of
+\(\mathbb{R}^d\), an interval of real numbers.. For the purposes of
+illustration, we first restrict attention to stochastic processes with
+discrete state spaces. This restriction will be relaxed later when we
+introduce continuous-state Markov processes such as Brownian motion and
+GBM.
+
+Now, let, \(\{X_n : n \in J\}\) where \(J = \{0,1,2,3,\ldots\}\) be a
+stochastic process on a probability space
+\((\Omega,\mathcal{F},\mathbb{P})\) with a discrete state space \(S\),
+as defined above. Following Hoel, Port, and Stone, this stochastic
+process is called a \emph{Markov process} if, for all states
+\(x_0, x_1, \ldots, x_{n-1}, x_{n}, x_{n+1} \in S\), the transition
+probabilities satisfy the following \emph{Markov rule}:
+
+\begin{equation}
+\mathbb{P}(X_{n+1} = x_{n+1} \mid 
+    X_0 = x_{0},\ldots,
+    X_{n-1} = x_{n-1}, X_{n} = x_{n} )
+\;=\;
+\mathbb{P}(X_{n+1} = x_{n+1} \mid X_n = x_{n}),
+\label{eq:markov_property}
+\end{equation}
+
+whenever these conditional probabilities are well-defined
+\cite{hoelportstone}. Intuitively, the Markov rule formalizes the idea
+that the future evolution of a Markov process depends only on its
+present state and not on past states. Once the current state
+\(X_n = x_n\) is known, any additional information about earlier states
+\(X_0, \ldots, X_{n-1}\) provides no further predictive power for
+determining the distribution of \(X_{n+1}\) \cite{hoelportstone}. For
+our purposes, Markov processes with discrete state spaces will be
+referred to as \emph{Markov chains} as per Hoel, Port, and Stone
+\cite{hoelportstone}, while the focus of this paper is on Markov
+processes with continuous state spaces, which we will simply refer to as
+\emph{Markov processes}.
+
+For a Markov process, the conditional rules
+
+\begin{equation}
+\mathbb{P}(X_{n+1} = y \mid X_n = x),
+\label{eq:transition_probability}
+\end{equation}
+
+are called the \emph{transition probabilities} to `go' from state \(x\)
+at time \(n\) to state \(y\) at time \(n+1\). These transition
+probabilities are called `stationary' if they are independent of \(n\)
+\cite{hoelportstone}. Generalizing this definition, if
+\(\{X_n : n \ge 0\}\) is a Markov process with state space \(S\), then
+for \(x, y \in S\), the function
+
+\begin{equation}
+P(x,y) = \mathbb{P}(X_1 = y,\, X_0 = x), \qquad x, y \in S,
+\label{eq:joint_transition_prob}
+\end{equation}
+
+is called the `transition function' of the chain which satisfies the
+following:
+
+\begin{equation}
+P(x,y) \ge 0 \quad \text{for all } x,y \in S,
+\qquad \text{and} \qquad
+\sum_{y \in S} P(x,y) = 1 \quad \text{for all } x \in S.
+\label{eq:transition_matrix_properties}
+\end{equation}
+
+These are also known as `one-step' transition probabilities of the
+Markov chain \cite{hoelportstone}. Finally, the function
+
+\begin{equation}
+\pi_0(x) = \mathbb{P}(X_0 = x), \qquad x \in S,
+\label{eq:initial_distribution}
+\end{equation}
+
+is called the initial distribution of the Markov chain such that the
+following hold:
+
+\begin{equation}
+\pi_0(x) \ge 0 \quad \text{for all } x \in S,
+\qquad \text{and} \qquad
+\sum_{x \in S} \pi_0(x) = 1,
+\label{eq:initial_distribution_properties}
+\end{equation}
+
+\cite{hoelportstone}.
+
+In continuous-state Markov processes, transition probabilities are
+described by probability density functions rather than discrete
+transition probabilities, and summations over states are replaced by
+integrals \cite{hoelportstone}.
+
+Both Brownian motion, which underlies geometric Brownian motion (GBM),
+and GBM itself are continuous-time Markov processes and therefore,
+satisfy the Markov property \cite{pettersdong}. The relevance of the
+Markov property to financial modeling lies in its role as a foundational
+assumption for continuous-time asset price dynamics. In particular, if
+the price of a common stock is modeled using GBM, the Markov property
+implies that the conditional distribution of the stock's future prices
+depends only on the current price and not on the history of past prices
+\cite{samuelson1965}.
+
+\subsection{Illustrative Example: The Weather Chain}\label{sec-exp-ex}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{mc.png}
+
+}
+
+\caption{\label{fig-mc}An Illustrative Markov Chain: The Weather Chain.}
+
+\end{figure}%
+
+Here, we introduce a simple illustrative example of a \emph{Markov
+chain} to solidify understanding of the Markov property before
+transitioning to continuous-time Markov processes. Figure~\ref{fig-mc}
+illustrates a simple discrete-time Markov chain with state space
+
+\begin{equation}
+S = \{\text{Rainy}, \text{Cloudy}, \text{Sunny}\},
+\label{eq:state_space_example}
+\end{equation}
+
+which models the evolution of daily weather conditions. At each time
+step, exactly one state is occupied, and transitions to a new state at
+the next time step occur according to the labeled transition
+probabilities \cite{hoelportstone}, \cite{geeksforgeeks_markov_nlp}.
+
+The arrows indicate possible one-step transitions between weather
+states, while the numerical labels specify the corresponding transition
+probabilities. For example, if the current state is Rainy, the chain
+remains Rainy with probability \(0.5\), transitions to Cloudy with
+probability \(0.3\), and transitions to Sunny with probability \(0.2\).
+Similarly, if the current state is Sunny, the chain remains Sunny with
+probability \(0.8\).
+
+This diagram provides a concrete illustration of the Markov property.
+The probability distribution of tomorrow's weather depends only on
+today's weather and not on the sequence of weather outcomes observed on
+previous days. Once the current state is known, all relevant information
+needed to determine the distribution of the next state is fully captured
+\cite{hoelportstone}.
+
+\subsection{Brownian Motion}\label{sec-exp-brown}
+
+We now introduce the continuous-time stochastic process `Brownian
+Motion', which serves as the foundational definition for GBM. Brownian
+motion, also known as a \emph{Wiener process}, is the classical model
+for the continuous random fluctuations and the highly irregular motion
+observed in microscopic particles suspended in liquid. Following the
+standard definition, a stochastic process \(\{B(t) : t \ge 0\}\) is
+called a \emph{standard Brownian motion} if it satisfies the following
+properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(B(0) = 0\)
+\item
+  For all \(0 \le s < t\),
+
+  \[
+  B(t) - B(s) \sim \mathcal{N}(0, t-s). 
+  \]
+\item
+  For any \(0 \le t_1 < t_2 < \cdots < t_n\), the random variables
+
+  \[
+  B(t_2) - B(t_1),\;
+  B(t_3) - B(t_2),\;\ldots,\;
+  B(t_n) - B(t_{n-1})
+  \]
+
+  are independent \cite{hoelportstone}, \cite{pettersdong}.
+\end{enumerate}
+
+Using these defining properties of Brownian motion, we make comments on
+some important results related to the process below:
+
+\subsubsection{Mean and Variance of Brownian
+Motion}\label{sec-exp-brown-1}
+
+From the above definition, particularly from property 2, it immediately
+follows that Brownian motion has mean zero at all times,
+
+\begin{equation}
+\mathbb{E}[B(t)] = 0, \qquad t \ge 0,
+\label{eq:brownian_mean}
+\end{equation}
+
+and variance grows linearly in time,
+
+\begin{equation}
+\mathrm{Var}(B(t)) = t, \qquad t \ge 0.
+\label{eq:brownian_variance}
+\end{equation}
+
+\subsubsection{Brownian Motion as a Gaussian Process and its Covariance
+Function}\label{sec-exp-brown-2}
+
+Brownian Motion \(\{B(t) : t \ge 0\}\) is also a Gaussian process, which
+means that every finite linear combination of the random variables
+\(B(t)\), for all \(t \in T\), is normally distributed
+\cite{hoelportstone}. The defining properties of Brownian motion also
+allow us to mathematically derive the covariance function for two random
+variables \(B(t)\) and \(B(s)\), which is given by
+
+\begin{equation}
+\mathrm{Cov}(B(s), B(t)) = \min(s,t), \qquad s,t \ge 0.
+\label{eq:brownian_covariance}
+\end{equation}
+
+A proof of this result is provided in Section~\ref{sec-appix}.
+
+For Gaussian processes, if two random variables have the same mean and
+covariance functions, as above, ``they also have the same joint
+distribution functions,'' \cite{hoelportstone}. So, the mean and
+covariance functions completely determine all finite-dimensional
+distributions and fully characterize a Brownian motion process
+\cite{hoelportstone}.
+
+\subsubsection{Brownian Motion as a Markov
+Process}\label{sec-exp-brown-3}
+
+An important consequence of the defining properties of Brownian motion,
+especially property 3, is that it satisfies the Markov property
+\cite{pettersdong}. Intuitively, given the current value \(B(t)\), the
+future increment \(B(t+h) - B(t)\) is independent of the past history of
+the process prior to time \(t\), and depends only on the length of the
+time interval \(h\) \cite{pettersdong}. As a result, once the present
+state is known, past values provide no additional information for
+predicting future behavior for a system modeled by this process
+\cite{hoelportstone,pettersdong}.
+
+\vspace{0.5em}
+\vspace{0.5em}
+
+While L.\textasciitilde Bachelier's seminal work established Brownian
+motion as a mathematical foundation for modeling the continuous random
+fluctuations of stock prices and is widely regarded as the birth of
+mathematical finance \cite{bachelier1900_rhm2018}, it leads to the
+result that in the long run, an option ``will increase in price
+indefinitely, coming even to exceed the price of the common stock
+itself,'' \cite{samuelson1965}. This outcome is counterintuitive, since
+ownership of the stock is economically equivalent to holding a perpetual
+option exercisable at zero cost \cite{samuelson1965}.
+
+As Samuelson later emphasized, this anomaly arises because modeling
+stock prices directly using Brownian motion allows prices to take on
+negative values with positive probability \cite{samuelson1965}. Such
+behavior is incompatible with financial reality, where stock prices are
+strictly positive \cite{samuelson1965}. These considerations motivate
+modeling the logarithm of the asset price as a Brownian motion, leading
+to the geometric Brownian motion (GBM) model. By exponentiating Brownian
+motion, GBM preserves the Markov property and yields lognormally
+distributed stock prices that takes on strictly positice values, a
+feature consistent with observed market dynamics and foundational to the
+Black--Scholes framework
+\cite{samuelson1965,blackscholes1973,pettersdong}. We formally develop
+the GBM model as well as the Black--Scholes framework in the following
+sections.
+
+\subsection{Stochastic Differential Equations (SDE) and It\^{}o's
+Lemma}\label{sec-exp-sde}
+
+In modeling continuously evolving random systems, it is useful to
+separate systematic trends from random fluctuations. On that note, we
+present a parameter \(\mu\), representing the \emph{drift} of Brownian
+motion, capturing its deterministic rate of change over time, and a
+second parameter \(\sigma\), representing the \emph{volatility}, which
+controls the magnitude of random fluctuations in the process. In
+financial applications, \(\mu\) reflects the expected rate of return of
+an asset such as a stock, while \(\sigma\) measures the uncertainty or
+risk associated with its price movements \cite{pettersdong}.
+
+Now, a stochastic process \(\{X(t)\}\) is called a Brownian motion with
+drift \(\mu\) and scaling \(\sigma\) if it satisfies the stochastic
+differential equation
+
+\begin{equation}
+dX(t) = \mu\,dt + \sigma\,dB(t),
+\label{eq:arithmetic_brownian_motion}
+\end{equation}
+
+where \(\{B(t)\}\) is a standard Brownian motion \cite{pettersdong}. It
+is possible to show that integrating this equation yields the explicit
+representation
+
+\begin{equation}
+X(t) = x_0 + \mu t + \sigma B(t),
+\label{eq:abm_solution}
+\end{equation}
+
+for some initial value \(x_0\in\mathbb{R}\) \cite{pettersdong}. Thus,
+\{X(t)\} is a Brownian motion with drift \(\mu\) and scaling \(\sigma\)
+if and only if it satisfies equation \ref{eq:abm_solution} for some
+initial condition \(x_0\in\mathbb{R}\).
+
+Let us suppose that the increment of a stochastic process \(X(t)\) over
+a small time interval \([t,t+\Delta t]\) can be approximated by
+
+\begin{equation}
+\Delta X(t) \approx \mu(X(t),t)\,\Delta t + \sigma(t)\,\Delta B(t),
+\label{eq:stochastic_increment}
+\end{equation}
+
+where \(\Delta B(t)\) denotes the increment of a Brownian motion, and
+\(\mu\) and \(\sigma\) are as defined above \cite{pettersdong}. In
+differential form, this relationship is written as the stochastic
+differential equation
+
+\begin{equation}
+dX(t) = \mu(X(t),t)\,dt + \sigma(t)\,dB(t).
+\label{eq:general_sde}
+\end{equation}
+
+This expression separates the evolution of \(X(t)\) into a deterministic
+component, governed by the drift term \(\mu\), and a random noise
+component \(\sigma\) driven by Brownian motion \cite{pettersdong}. The
+differential equation itself provides a mathematical framework for
+modeling the rate of change in Brownian motion, which is continuously
+evolving process.
+
+To analyze functions of stochastic processes that satisfy stochastic
+differential equations, we use It\^{}o's formula, which plays the role
+of the chain rule in stochastic calculus and provides us with a
+framemwork to obtain solutions of s.d.e's. Let us suppose that \(X(t)\)
+is a stochastic process that satisfies the stochastic differential
+equation above, and let \(Y(t)=f(X(t),t)\), where \(f\) has continuous
+first and second partial derivatives. Then It\^{}o's formula states that
+
+\begin{equation}
+dY
+=
+\left(
+    f_t + \mu f_x + \tfrac{1}{2}\sigma^2 f_{xx}
+\right)dt
++
+\sigma f_x\,dB(t),
+\label{eq:ito_formula}
+\end{equation}
+
+where subscripts denote partial derivatives \cite{pettersdong}.
+
+In the next section, we define geometric Brownian motion (GBM) as the
+solution to a stochastic differential equation and examine the
+application of It\^{}o's formula to analyze functions of the GBM process
+and derive the s.d.e.'s explicit solution \cite{pettersdong}.
+
+\subsection{Geometric Brownian Motion}\label{sec-exp-geom}
+
+We now introduce Geometric Brownian Motion (GBM), the stochastic process
+used to model asset prices in modern-day financial mathematics. A
+stochastic process \(\{X(t): t \ge 0\}\) is called a \emph{Geometric
+Brownian Motion (GBM)} if it satisfies the It\^{}o stochastic
+differential equation \ref{eq:general_sde} \cite{pettersdong}. It can be
+shown that solving this equation with initial condition \(X(0)=x_0>0\),
+where \(x_0 > 0\) by applying It\^{}o's formula with \(f(x) = ln(x)\)
+yields the explicit solution
+
+\begin{equation}
+X(t)=x_0\exp\!\left[\left(\mu-\tfrac12\sigma^2\right)t+\sigma B(t)\right],
+\label{eq:gbm_solution}
+\end{equation}
+
+\cite{pettersdong}.
+
+Thus, \(\{X(t)\}\) with \(X(t) = exp[Y(t)]\) is a geometric Brownian
+motion if and only if the corresponding log-process \(\{Y(t)\}\) is a
+Brownian motion with drift and scaling \cite{pettersdong}.
+
+In financial applications, \(X(t)\) represents the price of an asset,
+most commonly a stock, and we therefore write \(S(t)\) in place of
+\(X(t)\) for cleaner notation. We define the log-return process by
+
+\begin{equation}
+X(t) := \ln\!\left(\frac{S(t)}{S(0)}\right).
+\label{eq:log_price_process}
+\end{equation}
+
+From the explicit solution of the GBM stochastic differential equation,
+we see that since \(B(t)\) is normally distributed with mean \(0\) and
+variance \(t\) \cite{pettersdong}, \(X(t)\) as defined as the log-return
+process is then normally distributed with mean \(\mu t\) and variance
+\(\sigma^2 t\) \cite{pettersdong}. Consequently, the stock price process
+\(\{S(t): t \ge 0\}\) defined by
+
+\begin{equation}
+S(t) = S(0)e^{X(t)} = S(0)e^{\mu t + \sigma B(t)}, \qquad t \ge 0,
+\label{eq:stock_price_from_log_process}
+\end{equation}
+
+is a geometric Brownian motion with parameters \(\mu\) and \(\sigma\)
+\cite{pettersdong}. Finally, because \(X(t)\) is normally distributed,
+the random variable \(S(t)\) follows a \emph{lognormal distribution},
+written
+
+\begin{equation}
+S(t) \sim \text{lognormal}(\mu t, \sigma^2 t),
+\label{eq:lognormal_distribution_stock}
+\end{equation}
+
+as shown in \cite{pettersdong}.
+
+Geometric Brownian motion, as defined above, is a more appropriate model
+for stock prices than standard Brownian motion, since stock prices are
+strictly nonnegative and exhibit fluctuations that scale proportionally
+with their current level \cite{pettersdong}. Clearly, when modeling
+stock prices under GBM, the prices themselves are lognormally
+distributed and take on strictly non-negative values. This property make
+GBM the natural foundation for the Black--Scholes option pricing
+framework, which we develop in the next section.
+
+\subsection{The Black--Scholes Options Pricing
+Framework}\label{sec-exp-bsm}
+
+Before presenting the Black--Scholes formula, we briefly review the
+structure of a \emph{European call option}. A European call option gives
+its holder the right, but not the obligation, to purchase an underlying
+asset at a fixed price \(K\), called the \emph{strike price}, at a fixed
+future time \(T\), called the \emph{maturity} \cite{blackscholes1973}.
+The payoff of the option at time \(T\) is
+
+\begin{equation}
+\max(S(T) - K,\, 0),
+\label{eq:call_payoff}
+\end{equation}
+
+where \(S(T)\) denotes the price of the asset at maturity. This payoff
+depends only on the value of the asset at time \(T\) and not on how the
+price evolved over time \cite{pettersdong}.
+
+In Section~\ref{sec-exp-geom}, we modeled the asset price, or the price
+of a stock \(\{S(t)\}\) using geometric Brownian motion (GBM). Under
+this model, \(S(T)\) is lognormally distributed, and therefore the
+uncertainty in the option's payoff arises entirely from the randomness
+in the terminal stock price \(\{S(t)\}\). Thus, once the parameters
+\(S(0)\), \(\mu\), \(\sigma\), and \(T\) are specified, the distribution
+of \(S(T)\) is fully determined \cite{pettersdong}.
+
+Under certain `ideal conditions' within the market, Black and Scholes
+posit that ``the value of the option will depend only on the value of
+the stock and time and on certain variables that are taken to be known
+constants,'' \cite{blackscholes1973}. Essentially, Black and Scholes
+argue that the option payoff depends on the same underlying source of
+randomness as the stock price itself, and thus, it is possible to offset
+the randomness in the option's value by appropriately combining it with
+the stock, or by modeling the option's price as a function of the
+stock's price \cite{blackscholes1973}. When this randomness is
+eliminated, the remaining evolution of value would be deterministic.
+
+Black and Scholes obtain a mathematical formulation of this argument,
+which leads to a partial differential equation (p.d.e.), known as the
+Black---Scholes equation, which the option price must satisfy
+\cite{blackscholes1973}. Solving this p.d.e. using It\^{}o's Lemma
+yields the following Black--Scholes formula for the price of a European
+call option with strike price \(K\) and maturity \(T\) at time \(0\):
+
+\begin{equation}
+C(S_0, K, T, r, \sigma)
+= S_0\,\Phi(d_1) - K e^{-rT}\,\Phi(d_2),
+\label{eq:black_scholes_call_price}
+\end{equation}
+
+where,
+
+\begin{equation}
+d_1 = \frac{\ln(S_0/K) + (r + \tfrac12 \sigma^2)T}{\sigma\sqrt{T}},
+\qquad
+d_2 = d_1 - \sigma\sqrt{T}.
+\label{eq:black_scholes_d1_d2}
+\end{equation}
+
+Additionally, \(r\) is the risk-free interest rate representing the
+constant rate of return on an asset that is assumed to have no
+uncertainty, and \(\Phi(\cdot)\) denotes the cumulative distribution
+function of the standard normal distribution \cite{blackscholes1973}.
+This Black--Scholes formula provides a closed-form expression for the
+value of a European call option under the assumptions that asset prices
+follow geometric Brownian motion and that markets exist under certain
+ideal conditions. Despite its simplifying assumptions, the model has
+since proven to hold a variety of assets other than European call
+options, cementing it as one of the foundational results of modern
+financial mathematics \cite{blackscholes1973,pettersdong}.
+
+\subsection{Concluding Remark on the Black-Scholes Framework and its
+Connection to the Lognormal
+Model}\label{concluding-remark-on-the-black-scholes-framework-and-its-connection-to-the-lognormal-model}
+
+The closed-form solution to the Black--Scholes equation presented in
+Section~\ref{sec-exp-bsm} assumes the lognormal distribution of the
+terminal stock price \(S(T)\), as established in
+Section~\ref{sec-exp-geom}. Under the GBM model, this lognormal
+structure implies that the expected payoff of an option has an explicit
+analytical expression, which is the Black--Scholes price.
+
+In Section~\ref{sec-sim}, we exploit the same GBM-implied distribution
+of \(S(T)\) to compute a hypothetical option's price numerically.
+Specifically, we simulate independent realizations of the terminal stock
+price under the GBM model, evaluate the corresponding option payoffs,
+and approximate their expectation via Monte Carlo averaging. This allows
+us to compare the closed-form Black--Scholes price with a
+simulation-based estimate of the same theoretical quantity.
+
+\section{Simulation Study: GBM and the Black--Scholes
+Formula}\label{sec-sim}
+
+In this section, we illustrate how the GBM modelling assumptions for
+stock prices connect to the Black--Scholes option-pricing formula
+through a simple simulation experiment. Our goal is to start from the
+GBM dynamics introduced earlier and numerically approximate the price of
+a hypothetical European call option by averaging simulated payoffs. We
+then compare this estimate to the closed-form Black--Scholes price of
+this hypothetical option by following the framework presented in
+Section~\ref{sec-exp-bsm}, and we expect them to be approximately the
+same.
+
+Before we describe the study further, we note that the Black--Scholes
+formula and the simulation-based price of an option are both derived
+from the same GBM model, but they compute the payoff value in different
+ways. The Black--Scholes formula evaluates the expected payoff exactly
+using an analytical expression, while the simulation-based price
+approximates the same expectation by averaging payoffs across many
+simulated GBM outcomes. Comparing the two therefore checks whether the
+numerical simulation reproduces the theoretical Black--Scholes price,
+with any differences arising from Monte Carlo approximation error.
+
+\subsection{Design of the Toy Option}\label{sec-sim-toy}
+
+We consider a single stock whose price at time \(t\) is modeled by the
+GBM process
+
+\begin{equation}
+dS(t) = \mu S(t)\,dt + \sigma S(t)\,dB(t),
+\label{eq:gbm_sde}
+\end{equation}
+
+with the initial price \(S(0) = S_0\). For the simulation, we fix the
+following parameter values, with the parameters being defined the same
+as in Section~\ref{sec-exp-sde}, Section~\ref{sec-exp-geom}, and
+Section~\ref{sec-exp-bsm}.
+
+\begin{equation}
+S_0 = 100,\quad K = 100,\quad T = 1,\quad \mu = 0.02,\quad \sigma = 0.20.
+\label{eq:simulation_parameters}
+\end{equation}
+
+Here, we recall that \(K\) is the strike price, in dollars and \(T\) is
+the maturity of the option, in years. The quantity \(\mu\) plays is
+essenitally a constant interest rate, and \(\sigma\) is the volatility
+parameter from the GBM model that exhibits randomness. We recall from
+Section~\ref{sec-exp-bsm} that the payoff of a European call option with
+strike \(K\) and maturity \(T\) is,
+
+\begin{equation}
+\max(S(T) - K, 0).
+\label{eq:call_payoff_T}
+\end{equation}
+
+\cite{pettersdong}.
+
+Since \(S(T)\) is lognormally distributed under the GBM model, this
+payoff quantity will have a well-defined distribution determined by the
+parameters above.
+
+\subsection{Simulating Terminal Prices Under GBM}\label{sec-sim-sim}
+
+From equation \ref{eq:gbm_solution} and by using the notation in
+Section~\ref{sec-sim-toy}, we have,
+
+\begin{equation}
+S(T) = S(0)\exp\!\left(\big(\mu - \tfrac12 \sigma^2\big)T + \sigma B(T)\right).
+\label{eq:gbm_terminal_price}
+\end{equation}
+
+In the simulation, we will use the same volatility parameter \(\sigma\)
+as in the Black--Scholes formula. To generate a single simulated future
+price of the option at maturity time \(T\), termed \(S(T)\), we require
+a realization of the Brownian motion \(B(T)\). By definition of Brownian
+motion as presented in Section~\ref{sec-exp-brown}, \(B(T)\) is normally
+distributed with mean \(0\) and variance \(T\):
+
+\begin{equation}
+B(T) \sim N(0,T).
+\label{eq:brownian_terminal_distribution_repeat}
+\end{equation}
+
+We know, a well-known property of the normal distribution is that if
+\(Z \sim N(0,1)\), then for any constant \(a > 0\),
+
+\begin{equation}
+aZ \sim N(0, a^{2}).
+\label{eq:normal_scaling}
+\end{equation}
+
+\cite{blitzstein2019introduction}. Choosing \(a = \sqrt{T}\) gives,
+
+\begin{equation}
+\sqrt{T}\,Z \sim N(0,T),
+\label{eq:normal_scaling_sqrtT}
+\end{equation}
+
+and therefore,
+
+\begin{equation}
+B(T) \stackrel{d}{=} \sqrt{T}\,Z,
+\qquad Z \sim N(0,1).
+\label{eq:brownian_scaling}
+\end{equation}
+
+Thus, to generate a realization of \(B(T)\) in our simulation, it
+suffices to draw a standard normal random variable \(Z\) and set
+\(B(T) = \sqrt{T}\,Z\). Substituting this into the explicit GBM solution
+yields the simulation formula,
+
+\begin{equation}
+S(T)
+= S_0 \exp\!\left( \big(\mu - \tfrac12\sigma^2\big)T
+  + \sigma\sqrt{T}\, Z \right),
+\qquad Z \sim N(0,1).
+\label{eq:gbm_terminal_simulation}
+\end{equation}
+
+Repeating this procedure \(N\) times produces \(N\) independent
+realizations,
+
+\begin{equation}
+S^{(1)}(T),\, S^{(2)}(T),\,\dots,\,S^{(N)}(T).
+\label{eq:gbm_terminal_samples}
+\end{equation}
+
+of simulated terminal or strike prices of the stock at time \(T\) under
+the GBM model.
+
+\subsection{Approximation of the Call Price under GBM}\label{sec-sim-mc}
+
+For each simulated terminal stock price \(S^{(i)}(T)\) from
+Section~\ref{sec-sim-sim}, the corresponding payoff or final price of
+the option at maturity is,
+
+\begin{equation}
+\text{payoff}^{(i)} = \max\big(S^{(i)}(T) - K, 0\big).
+\label{eq:call_payoff_simulated}
+\end{equation}
+
+Mathematically, it is possible to show that for any option payoff
+depending only on the terminal price of a stock, \(S(T)\), the
+time--\(0\) price of the option is the discounted expectation of that
+payoff under the lognormal distribution of \(S(T)\) generated by the GBM
+model \cite{pettersdong}. If we denote the theoretical price of the call
+option at \(T=0\) as \(C_0\), then intuitively, the Black--Scholes
+framework expresses \(C_0\) as a discounted expectation of the option's
+payoff at time \(T\). In other words, since the expected payoff of the
+option is computed at time \(T\), we compute its payoff at time \(T=0\)
+through `discounting,' \cite{pettersdong}.
+
+Now, since the payoff of a European call option is \(\max(S(T)-K,0)\) as
+presented Section~\ref{sec-exp-bsm}, the mathematical representation of
+the above intuition yields,
+
+\begin{equation}
+C_0 = e^{-\mu T}\,\mathbb{E}\!\left[\max(S(T)-K,0)\right].
+\label{eq:call_price_expectation}
+\end{equation}
+
+In practice, the expectation in \ref{eq:call_price_expectation} cannot
+be evaluated directly, and is instead approximated numerically. We do so
+by simulating the terminal stock prices at time \(T\), and then by
+replacing the expectation in \ref{eq:call_price_expectation} with a
+sample average of \(N\) simulated and independent discounted payoffs, as
+demonstrated in Section~\ref{sec-sim-sim}. This yields the GBM estimator
+of the time--0 call price, \(\widehat{C}_N\). An estimate of this
+approximation's standard error is given by,
+
+\begin{equation}
+\text{SE}(\widehat{C}_N)
+= \frac{s}{\sqrt{N}},
+\label{eq:mc_standard_error}
+\end{equation}
+
+where \(s\) is the sample standard deviation of the discounted payoffs.
+
+\subsection{Summary Of Process: Comparing the GBM Simulated Price with
+the Analytical Black-Scholes Price}\label{sec-sim-comp}
+
+In this section, we compute the time--0 price of a European call option
+under the GBM model in two ways: analytically, using the Black--Scholes
+explicit formula, and numerically using a simulated GBM estimate. The
+analytical Black--Scholes price, \(C_{\mathrm{BS}}\), is computed using
+the closed-form formula in \ref{eq:black_scholes_call_price}, where the
+terms \(d_1\) and \(d_2\) are defined in \ref{eq:black_scholes_d1_d2}.
+This formula gives the option price directly as a function of ((S\_0, K,
+T, r, \sigma)).
+
+The GBM simulation-based price approximates the same time--0 value by
+simulating many possible terminal stock prices under GBM. Specifically,
+we generate independent draws (S\^{}\{(i)\}(T)) using the terminal
+simulation formula in \ref{eq:gbm_terminal_simulation}, compute the
+corresponding option payoffs using \ref{eq:call_payoff_simulated}, and
+then average the \emph{discounted} payoffs to form the GBM estimator
+\(\widehat{C}_N\). The standard error of this Monte Carlo estimate is
+summarized by \ref{eq:mc_standard_error}.
+
+Because both methods are derived from the same GBM assumptions, they are
+estimating the same theoretical price. So, we expect that with
+increasing \(N\), the value of \(\widehat{C}_N\) converges to the
+analytical value of \(C_{\mathrm{BS}}\). Any differences between
+\(C_{\mathrm{BS}}\) and \(\widehat{C}_N\) are expected to arise due to
+sampling error.
+
+\subsection{Implementation}\label{sec-sim-imp}
+
+In this sub-section, we briefly describe the reproducible Python code
+used to carry out the simulation study introduced in
+Section~\ref{sec-sim-sim}, Section~\ref{sec-sim-mc}, and
+Section~\ref{sec-sim-comp}. The full implementation of the code is
+provided in a reproducible Google Colab notebook
+\cite{rashha2025simulationstudy}, which will be referring to throughout
+this sub-section.
+
+The goal of the implementation is to consider a hypothetical European
+call option with pre-specified parameters as defined in
+Section~\ref{sec-sim-toy}, generate simulated terminal stock prices
+under the GBM model, compute the corresponding payoffs for the
+hypotehtical option, and compare the resulting GBM estimates with the
+analytical Black--Scholes value of the option's payoff. The code is
+organized into three key components: (1) a function that evaluates the
+Black--Scholes closed-form formula to compute the payoff of the
+hypothetical option, (2) a function that simulates terminal stock prices
+using the explicit GBM solution, and (3) an estimator function that
+averages the simulated payoffs, discounts it to time--0, and thus
+computes the GBM simulated payoff of the option.
+
+\subsubsection{Black--Scholes Pricing Function}\label{sec-sim-imp-1}
+
+The first component of the code is a function that evaluates the
+theoretical price of a European call option using the Black--Scholes
+formula presented in in Section~\ref{sec-exp-bsm}. Given the parameter
+tuple \((S_0, K, T, r, \sigma)\), the pricing function computes the
+quantities \(d_1\) and \(d_2\), and returns the corresponding
+closed-form option value at time--0.
+
+\subsubsection{GBM Simulator Function}\label{sec-sim-imp-2}
+
+To simulate realizations of the terminal stock price \(S(T)\) under the
+GBM model, we use the explicit solution to the stochastic differential
+equation presented in Section~\ref{sec-exp-geom}. Under this model, the
+terminal price is given by equation \ref{eq:gbm_terminal_simulation}.
+Independent draws of the normally distributed random variable \(Z\)
+yield independent realizations of \(S(T)\), as explained in
+Section~\ref{sec-sim-sim}, allowing for an approximation of expectations
+involving the terminal stock price.
+
+\subsubsection{GBM Estimator Function}\label{sec-sim-imp-3}
+
+Using simulated terminal prices \(S^{(i)}(T)\), the GBM estimator of the
+European call option price is constructed by averaging discounted
+payoffs across \(N\) independent simulation paths. The estimator is
+given by
+
+\begin{equation}
+\widehat{C}_N
+= e^{-rT}\,\frac{1}{N}\sum_{i=1}^{N} \max\!\left(S^{(i)}(T) - K,\, 0\right).
+\label{eq:call_payoff_simulated}
+\end{equation}
+
+\cite{pettersdong}, \cite{blackscholes1973}.
+
+In order to ensure consistency with the Black--Scholes framework, the
+drift parameter \(\mu\) used in the simulation is set equal to the
+risk-free rate \(r\) since they both capture the deterministic rate of
+change over time. The variability of this estimator is quantified by its
+standard error, which this function computes, along with the following
+95\% confidence interval,
+
+\begin{equation}
+\widehat{C}_N \pm 1.96 \times \mathrm{SE}\!\left(\widehat{C}_N\right).
+\label{eq:mc_confidence_interval}
+\end{equation}
+
+\subsection{Simulation Results and Analysis}\label{sec-sim-res}
+
+Finally, we compare the Black-Scholes analytical price and the GBM
+simulated price of the payoff of our hypothtical European call option
+based on the results obtained from the implementation of this study, as
+described in previous sections.
+
+Using the code in \cite{rashha2025simulationstudy}, the Black-Scholes
+price of the option is computed as,
+
+\begin{equation}
+C_{\mathrm{BS}} = 8.9160.
+\label{eq:black_scholes_numeric}
+\end{equation}
+
+We treat this value serves as a reference point for assessing the
+accuracy of the simulation-based estimator using GBM price paths of the
+stocks. Table \ref{tab:mcresults} summarizes the estimates of the option
+prices for a varying number of simulated GBM paths that were tested:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{r|c|c|c|c|c}
+\hline
+$N_{\text{paths}}$ & $\widehat{C}_N$ & Std.\ Error & 95\% CI Lower & 95\% CI Upper & $\lvert \widehat{C}_N - C_{\mathrm{BS}} \rvert$ \\
+\hline
+1{,}000   & 8.4335 & 0.4229 & 7.6046 & 9.2623 & 0.4826 \\
+5{,}000   & 9.0358 & 0.1926 & 8.6584 & 9.4132 & 0.1197 \\
+20{,}000  & 9.0621 & 0.0984 & 8.8692 & 9.2549 & 0.1460 \\
+100{,}000 & 8.9361 & 0.0437 & 8.8505 & 9.0216 & 0.0200 \\
+\hline
+\end{tabular}
+\caption{GBM Estimates of the European Call Price using Different Numbers of Simulated Paths.}
+\label{tab:mcresults}
+\end{table}
+
+From the results above, we observe that as the number of simulated paths
+\(N\) increases, the GBM price estimate converges toward the
+Black--Scholes benchmark price. For instance, the estimate based on
+\(1{,}000\) paths differs from \(C_{\mathrm{BS}}\) by approximately
+\(0.48\) units, whereas the estimate based on \(100{,}000\) paths
+differs by only \(0.02\) units. This convergent behavior is what we
+expect from this simulation, since the GBM estimator is essentially a
+sample average of payoffs computed from many GBM-simulated terminal
+stock prices, and therefore converges to the true expectation \(C_0\) as
+\(N\) increases. This is also consistent with the theory of the
+Black-Scholes Pricing Framework, which assumes GBM as the underlying
+distribution of the assets when computing the analytical price of the
+options \cite{pettersdong}, \cite{blackscholes1973}.
+
+\section{Application of Geometric Brownian Motion and The Black-Scholes
+Framework: Real Markets}\label{sec-app}
+
+\subsection{Motivations}\label{sec-app-mot}
+
+In this section, we will apply the Geometric Brownian Motion (GBM)
+framework and the Black--Scholes option pricing model to real financial
+data in order to assess how well the theoretical assumptions examined
+earlier align with observed market behavior. Because publicly available
+data on option payoffs are limited, this application focuses on modeling
+stock prices, for which high-frequency historical data are readily
+available. This approach is standard in empirical finance, since GBM and
+the Black-Scholes formula have been shown to hold for a variety of
+assets other than European call options \cite{pettersdong}.
+
+Using daily closing values of the S\&P\textasciitilde500 index, we
+estimate the parameters of a GBM model from historical data, examine
+whether empirical log returns are consistent with the normality
+assumption implied by the model, and use the fitted parameters to price
+a hypothetical European call option. By comparing GBM--based price
+estimates computed following the framework in Section~\ref{sec-sim-imp}
+with the corresponding Black--Scholes closed-form value, this
+application illustrates how the GBM model performs when calibrated to
+real market data and highlights the extent to which theoretical option
+pricing results are supported in practice.
+
+All code for this section has been written in Python, is fully
+reproducible, and can be found in \cite{rashha2025applicationcode}.
+
+\subsection{The Dataset}\label{sec-app-dat}
+
+For the application, we use a dataset of the daily
+S\&P\textasciitilde500 index values obtained from the publicly available
+\texttt{xLSTM-TS} repository maintained by Lopez Gil
+\cite{gil2024xlstmtsdata}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sp500\_df }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"/Users/nahianrashha/Desktop/sp500\_daily.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 6037 Columns: 8
+-- Column specification --------------------------------------------------------
+Delimiter: ","
+dbl  (7): Open, High, Low, Close, Volume, Dividends, Stock Splits
+dttm (1): Date
+
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(sp500\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 6,037
+Columns: 8
+$ Date           <dttm> 2000-01-03 05:00:00, 2000-01-04 05:00:00, 2000-01-05 0~
+$ Open           <dbl> 1469.25, 1455.22, 1399.42, 1402.11, 1403.45, 1441.47, 1~
+$ High           <dbl> 1478.00, 1455.22, 1413.27, 1411.90, 1441.47, 1464.36, 1~
+$ Low            <dbl> 1438.36, 1397.43, 1377.68, 1392.10, 1400.73, 1441.47, 1~
+$ Close          <dbl> 1455.22, 1399.42, 1402.11, 1403.45, 1441.47, 1457.60, 1~
+$ Volume         <dbl> 931800000, 1009000000, 1085500000, 1092300000, 12252000~
+$ Dividends      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+$ `Stock Splits` <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+\end{verbatim}
+
+The dataset spans the period from March 1,\textasciitilde2000 to
+December 29,\textasciitilde2023 and contains daily observations of the
+S\&P\textasciitilde500 index. The dataset is stored locally as
+\texttt{sp500\_daily.csv}, has 6037 observations, each representing a
+single trading day within the described period, and contains eight
+columns: \texttt{Date}, \texttt{Open}, \texttt{High}, \texttt{Low},
+\texttt{Close}, \texttt{Volume}, \texttt{Dividends}, and
+\texttt{Stock Splits}.
+
+The \texttt{Close} column records the closing level or prices of the
+S\&P\textasciitilde500 index on each trading day and serves as the price
+process \(\{S(t)\}\) used throughout the analysis. Because the data are
+recorded at a daily frequency, we will set the time increment used for
+computing log returns to \(\Delta t = 1/252\), reflecting the
+conventional assumption of approximately 252 trading days per year in
+U.S.~equity markets.
+
+In the following section, we use the daily closing prices from this
+dataset to estimate the parameters of a Geometric Brownian Motion model
+and to assess whether the empirical distribution of log returns is
+consistent with the normality assumption implied by the GBM framework.
+
+\subsection{Estimation of the GBM Model from Market
+Data}\label{sec-app-est}
+
+Using the daily closing prices of the S\&P500 index described above, we
+model the price process \(\{S_t\}\) as a Geometric Brownian Motion,
+following the theoretical framework introduced in
+Section~\ref{sec-exp-geom}. The estimation procedure is based on
+continuously compounded log returns, \begin{equation}
+r_t = \log\!\left(\frac{S_t}{S_{t-1}}\right),
+\label{eq:log_returns}
+\end{equation}
+
+which, under the GBM assumption, are independent and normally
+distributed with parameters determined by the drift \(\mu\) and
+volatility \(\sigma\) \cite{pettersdong}.
+
+In the application code, the dataset is first ordered chronologically,
+rows with missing values are omitted, and then, the \texttt{Close}
+column is extracted as the observed price series. Daily log returns are
+then computed using \ref{eq:log_returns}. Because the data are observed
+at a daily frequency, the time increment is fixed at \begin{equation}
+\Delta t = \frac{1}{252},
+\label{eq:dt}
+\end{equation} corresponding to the standard convention of 252 trading
+days per year.
+
+We then estimate the GBM parameters using sample moments of the daily
+log returns. Specifically, the sample variance of log returns is used to
+estimate the volatility parameter \(\sigma\), while the drift parameter
+\(\mu\) is obtained by rescaling the sample mean of log returns and
+accounting for the Itô correction implied by the GBM solution, as
+discussed Section~\ref{sec-exp-geom}. This moment-based estimation
+approach follows from the closed-form distribution of GBM log returns.
+
+\subsection{Theoretical Basis for Parameter
+Estimation}\label{sec-app-theo}
+
+The estimation strategy used in this application follows from the
+analytical properties of the Geometric Brownian Motion (GBM) model
+introduced earlier in the report. Under GBM, the asset price process
+satisfies \begin{equation}
+dS_t = \mu S_t \, dt + \sigma S_t \, dB_t,
+\label{eq:gbm_sde}
+\end{equation} where \(\mu\) is the drift parameter and \(\sigma\) is
+the volatility parameter.
+
+As shown in Section Section~\ref{sec-exp-geom}, from
+\ref{eq:gbm_solution}, this stochastic differential equation has the
+exact closed-form solution \begin{equation}
+S_t = S_0 \exp\!\left( (\mu - \tfrac{1}{2}\sigma^2)t + \sigma B_t \right),
+\label{eq:gbm_solution_2}
+\end{equation}
+
+\cite{pettersdong}.
+
+Now, taking logarithms of price ratios over a fixed time increment
+\(\Delta t\) yields the log return \begin{equation}
+\log\!\left(\frac{S_t}{S_{t-\Delta t}}\right)
+= (\mu - \tfrac{1}{2}\sigma^2)\Delta t + \sigma (B_t - B_{t-\Delta t}).
+\label{eq:log_return_expression}
+\end{equation}
+
+From Section~\ref{sec-exp-brown} we know that Brownian motion has
+independent increments satisfying \begin{equation}
+B_t - B_{t-\Delta t} \sim \mathcal{N}(0, \Delta t),
+\label{eq:brownian_increment}
+\end{equation}
+
+\cite{pettersdong}. From this, it follows that the log returns are
+normally distributed,
+
+\begin{equation}
+r_t := \log\!\left(\frac{S_t}{S_{t-1}}\right)
+\sim \mathcal{N}\!\left( (\mu - \tfrac{1}{2}\sigma^2)\Delta t,\; \sigma^2 \Delta t \right).
+\label{eq:log_return_distribution}
+\end{equation}
+
+Thus, the population mean and variance of log returns would staisfy the
+following,
+
+\begin{equation}
+\mathbb{E}[r_t] = (\mu - \tfrac{1}{2}\sigma^2)\Delta t,
+\label{eq:gbm_mean}
+\end{equation} and \begin{equation}
+\mathrm{Var}(r_t) = \sigma^2 \Delta t.
+\label{eq:gbm_variance}
+\end{equation}
+
+These relationships provide the necessary theoretical justification for
+the estimation approach used in our application. Under the GBM
+assumptions, we expect that the sample mean and sample variance of
+observed log returns would converge to \ref{eq:gbm_mean} and
+\ref{eq:gbm_variance}, respectively. The volatility parameter \(\sigma\)
+can therefore be estimated from the sample variance, while the drift
+parameter \(\mu\) is recovered by rearranging the mean relationship.
+Using the estimated parameters, the implied daily mean and variance of
+log returns would then be,
+
+\begin{equation}
+\mathbb{E}[r_t] = (\hat{\mu} - \tfrac{1}{2}\hat{\sigma}^2)\Delta t,
+\label{eq:gbm_mean_2}
+\end{equation} and \begin{equation}
+\mathrm{Var}(r_t) = \hat{\sigma}^2 \Delta t.
+\label{eq:gbm_var_2}
+\end{equation}
+
+In the application, these quantities are used to compare the empirical
+distribution of observed log returns to the normal distribution implied
+by the fitted GBM model to the data \cite{rashha2025applicationcode}. We
+coduct this comparison by visually inspecting the distribution of the
+simulated of the log-returns and comparing it to the normal distribution
+to evaluate whether the normality assumption underlying GBM is
+reasonable for the S\&P\textasciitilde500 data.
+
+\subsection{Hypothetical Option Pricing under
+Black--Scholes}\label{sec-app-hyp}
+
+With the volatility parameter estimated from historical data, we apply
+the Black--Scholes framework introduced in \ref{sec-exp-bsm} to price a
+hypothetical European call option specified by a maturity \(T\), strike
+price \(K\), and a constant risk-free interest rate \(r\).
+
+The drift used in simulation is set equal to the risk-free rate \(r\),
+while volatility is fixed at the estimated value \(\hat{\sigma}\). Two
+pricing approaches are implemented. First, the Black--Scholes
+closed-form solution is evaluated using the fitted parameters. Second, a
+GBM simulated estimate is obtained by simulating terminal prices from
+the GBM solution and obtaining the discounted average payoff. This
+comparison mirrors the simulation-based pricing framework developed in
+\ref{sec-sim-imp} and could aid in illustrating how the analytical and
+numerical approaches relate when calibrated to real market data.
+
+\subsection{Implementation Overview}\label{sec-app-imp}
+
+The application code performs the following steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Loads daily S\&P\textasciitilde500 index data and extracts the closing
+  price series.
+\item
+  Computes daily log returns and sets the time increment according to
+  equation \ref{eq:dt}.
+\item
+  Estimates the GBM drift and volatility using sample moments of log
+  returns.
+\item
+  Evaluates the normality assumption implied by the GBM model using
+  graphical diagnostics.
+\item
+  Prices a hypothetical European call option using both the
+  Black--Scholes formula and the GBM estimated volatility parameter.
+\end{enumerate}
+
+\cite{rashha2025applicationcode}
+
+In the next section, we examine the results obtained from this
+application example.
+
+\subsection{Application Parameters and Results}\label{sec-app-res}
+
+\subsubsection{Empirical Log Returns and GBM
+Fit}\label{empirical-log-returns-and-gbm-fit}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{hist.png}
+
+}
+
+\caption{\label{fig-hist}Histogram of daily S\&P\textasciitilde500 log
+returns overlaid on GBM-implied normal distribution.}
+
+\end{figure}%
+
+Figure~\ref{fig-hist} compares the empirical distribution of daily log
+returns for the S\&P\textasciitilde500 to the normal distribution
+implied by the fitted GBM model. We observe that while the fitted
+distribution of log returns captures the center of the normal
+distribution reasonably well, the empirical log returns exhibit
+substantial departures from normality.
+
+The estimated sample moments of daily log returns are, \begin{equation}
+\hat{m} = 0.00053742, \qquad \hat{v} = 3.58197760 \times 10^{-4},
+\label{eq:sample_moments}
+\end{equation}
+
+Using equations \ref{eq:gbm_mean_2} and \ref{eq:gbm_var_2} and inputting
+the above values of the sample moments, we obtain the following
+estimated GBM parameters for drift and volatility respectively:
+
+\begin{equation}
+\hat{\mu} = 0.1806, \qquad \hat{\sigma} = 0.3004.
+\label{eq:gbm_params}
+\end{equation}
+
+The computed higher-order moments indicate pronounced departures from
+normality. The empirical skewness and excess kurtosis are,
+
+\begin{equation}
+\text{Skewness} = 3.4924, \qquad \text{Excess kurtosis} = 156.1138.
+\label{eq:higher_moments}
+\end{equation}
+
+These results likely capture the well-known heavy-tailed nature real of
+equity markets, and a key limitation of the GBM assumption
+\cite{article}, \cite{pettersdong}.
+
+\subsubsection{GBM Forecast
+Distribution}\label{gbm-forecast-distribution}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{gbm_paths.png}
+
+}
+
+\caption{\label{fig-paths}Sample of Simulated GBM Price Paths fitted on
+the S\&P500.}
+
+\end{figure}%
+
+Using the above fitted GBM parameters in \ref{eq:gbm_params}, we
+generate a one-year-ahead distribution for the S\&P\textasciitilde500
+index. Starting from the current index level or the last observed
+closing value of the index, \begin{equation}
+S_0 = 4769.83,
+\label{eq:s0}
+\end{equation} the simulated GBM forecast distribution yields the
+following quantiles: \begin{equation}
+S_{0.05}(T) \approx 3333.80, \quad
+S_{0.50}(T) \approx 5440.97, \quad
+S_{0.95}(T) \approx 8949.06.
+\label{eq:forecast_quantiles}
+\end{equation}
+
+Figure~\ref{fig-paths} illustrates a subset of simulated GBM index price
+paths over the one-year horizon. The wide dispersion of trajectories
+reflects the relatively large estimated volatility and likely indicates
+the uncertainty inherent in long-term equity forecasts under the GBM
+model \cite{pettersdong}.
+
+\label{fig:gbm_paths}
+
+\subsection{Option Pricing Results}\label{option-pricing-results}
+
+Using the historical volatility estimate \(\hat{\sigma}\), a
+hypothetical European call option is priced under the Black--Scholes
+framework. The option parameters are \begin{equation}
+T = 1.0, \qquad r = 0.04, \qquad K = 1.05 S_0 = 5008.32.
+\label{eq:option_params}
+\end{equation}
+
+The Black--Scholes closed-form price is \begin{equation}
+C_{\mathrm{BS}} = 551.2667.
+\label{eq:bs_price}
+\end{equation}
+
+A GBM estimate based on \(N = 200{,}000\) simulated GBM paths yields
+\begin{equation}
+\hat{C}_{\mathrm{MC}} = 553.1366,
+\label{eq:mc_price}
+\end{equation} with standard error \begin{equation}
+\mathrm{SE} = 2.2193,
+\label{eq:mc_se}
+\end{equation} and corresponding 95\% confidence interval
+\begin{equation}
+[548.7868,\;557.4863].
+\label{eq:mc_ci}
+\end{equation}
+
+The absolute difference between the Monte Carlo estimate and the
+Black--Scholes price is \begin{equation}
+\lvert \hat{C}_{\mathrm{MC}} - C_{\mathrm{BS}} \rvert = 1.8699.
+\label{eq:price_diff}
+\end{equation}
+
+The relatively narrow absolute difference between the GBM simulated
+price of the hypothetical option and the analytical Black-Scholes
+framework reaffirms our discussion in Section~\ref{sec-sim-res}, where
+we saw that for large \(N\), we expect the GBM simulated price of an
+asset to converge to the Black-Scholes one. This agreement shows that,
+conditional on the fitted volatility parameter, the simulation-based
+pricing procedure is numerically consistent with the Black--Scholes
+formula.
+
+Overall, this section illustrates how the GBM framework operates when
+calibrated to real market data. Historical S\&P\textasciitilde500
+returns provide a natural basis for estimating the model's first two
+moments, which in turn determine the volatility parameter used for
+forecasting and option pricing. While the fitted GBM model produces
+coherent simulations and yields fairly consistent Black--Scholes and
+GBM-simulated option prices, diagnostic analysis of log returns reveals
+substantial departures of its distribution from the normality assumption
+underlying GBM. As a result, the application highlights both the
+practical usefulness of GBM as an approximation of the behavior of asset
+prices and the importance of interpreting its outputs with caution when
+modeling real markets.
+
+\section{Conclusion}\label{conclusion}
+
+In this paper, we examined geometric Brownian motion (GBM) as a
+foundational model for asset prices in equity markets, and its role in
+developing the Black--Scholes framework for pricing options. In
+Section~\ref{sec-exp}, we explored how GBM arises from Brownian motion,
+its stochastic properties, including how it yields lognormally
+distributed prices for assets, and its closed-form solution for terminal
+prices of assets. Finally, we observed GBM's connection to the
+Black--Scholes formula for options under ideal market conditions.
+
+In Section~\ref{sec-sim}, the simulation study served as a bridge
+between theory and computation. By simulating terminal prices of stocks
+directly using the closed-form solution of the GBM stochastic
+differential equation, the study demonstrated how it is possible to
+approximate option values as discounted expected payoffs under GBM. The
+close agreement between the GBM estimates and the Black--Scholes
+closed-form price in the toy example illustrated the consistency of the
+models and solidified the theoretical connection between two
+foundational contributions to modern-day financial mathematics by Paul
+Samuelson, Fischer Black, and Merton Scholes \cite{samuelson1965},
+\cite{blackscholes1973}.
+
+The final application to real S\&P 500 data highlighted both the
+practical utility and the limitations of the GBM model. Calibrating GBM
+parameters using historical daily log returns allowed us to construct
+many possible future index paths, and the price a hypothetical European
+call option using the Black--Scholes framework. While the fitted model
+matched the empirical mean and variance of log returns by construction,
+diagnostic plots revealed substantial deviations from normality in
+higher-order moments, reflecting skewness and heavy tails commonly
+commonly observed in equity markets \cite{article}. However, conditional
+on the estimated volatility parameter, the Black--Scholes price and its
+GBM approximation of the option price remained numerically consistent,
+reinforcing the interpretation of both GBM and Black--Scholes as
+model-based pricing tools and the notion of exercising caution when
+using them to capture real market dynamics .
+
+\section{Appendix: Covariance of Brownian Motion}\label{sec-appix}
+
+Let \(\{B(t) : t \ge 0\}\) be a standard Brownian motion. We derive the
+covariance function \(\mathrm{Cov}(B(s), B(t))\) using the defining
+properties of Brownian motion---independent increments and Gaussian
+increments with variance equal to the time increment---as in Petters and
+Dong \cite{pettersdong}.
+
+Fix \(0 \le s \le t\). Then we can write \begin{equation}
+B(t) = B(s) + \big( B(t) - B(s) \big).
+\label{eq:bm_decomposition}
+\end{equation}
+
+By the independent-increments property of Brownian motion, \(B(s)\) and
+\(B(t) - B(s)\) are independent random variables. Therefore,
+\begin{equation}
+\mathrm{Cov}\big( B(s), B(t) \big)
+= \mathrm{Cov}\big( B(s),\, B(s) + (B(t) - B(s)) \big).
+\label{eq:cov_step1}
+\end{equation}
+
+Using the bilinearity of covariance, \begin{equation}
+\mathrm{Cov}\big( B(s),\, B(s) + (B(t) - B(s)) \big)
+= \mathrm{Cov}\big( B(s), B(s) \big)
++ \mathrm{Cov}\big( B(s), B(t) - B(s) \big).
+\label{eq:cov_bilinear}
+\end{equation}
+
+Since \(B(s)\) and \(B(t) - B(s)\) are independent, their covariance is
+zero: \begin{equation}
+\mathrm{Cov}\big( B(s), B(t) - B(s) \big) = 0.
+\label{eq:cov_zero}
+\end{equation}
+
+Hence, \begin{equation}
+\mathrm{Cov}\big( B(s), B(t) \big)
+= \mathrm{Cov}\big( B(s), B(s) \big)
+= \mathrm{Var}\big( B(s) \big).
+\label{eq:cov_equals_var}
+\end{equation}
+
+From the definition of Brownian motion, we know that \begin{equation}
+B(s) - B(0) \sim \mathcal{N}(0, s),
+\label{eq:bm_variance}
+\end{equation} which implies \begin{equation}
+\mathrm{Var}\big( B(s) \big) = s.
+\label{eq:var_bs}
+\end{equation}
+
+Therefore, for \(0 \le s \le t\), \begin{equation}
+\mathrm{Cov}(B(s), B(t)) = s.
+\label{eq:cov_st_ordered}
+\end{equation}
+
+By symmetry of covariance, \begin{equation}
+\mathrm{Cov}(B(s), B(t)) = \mathrm{Cov}(B(t), B(s)),
+\label{eq:cov_symmetry}
+\end{equation} and thus, for arbitrary \(s,t \ge 0\), \begin{equation}
+\mathrm{Cov}(B(s), B(t)) = \min(s,t).
+\label{eq:cov_min}
+\end{equation}
+
+This proves the result.
+
+
+\bibliography{bibliography.bib}
+
+
+
+\end{document}
