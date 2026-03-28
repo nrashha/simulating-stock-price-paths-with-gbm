@@ -1,4 +1,4 @@
-#Stock Volatility Forecasting with Geometric Brownian Motion (GBM) 
+# Stock Volatility Forecasting with Geometric Brownian Motion (GBM) 
 
 
 ▪ Conducted expository review of the Black-Scholes Options Pricing Model from the original 1973 paper
